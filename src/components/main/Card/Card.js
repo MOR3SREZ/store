@@ -1,5 +1,6 @@
 import React from 'react';
 
+import IconCheckboxes from './addIcon/addIcon';
 //Styles
 import './Card.css';
 
@@ -15,6 +16,9 @@ const Card = ({ id, image, title, price, rating }) => {
           <span className='product-rate'>⭐{rating.rate}</span>
           <span className='product-price'>$ {price}</span>
         </div>
+      </div>
+      <div className='add-icon'>
+        <IconCheckboxes id={id} />
       </div>
     </div>
   );

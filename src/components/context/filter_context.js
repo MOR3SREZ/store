@@ -21,6 +21,11 @@ export function FilterProvider({ children }) {
 
   const [sortBy, setSortBy] = useState('');
 
+  const [cartItem, setCartItem] = useState([]);
+
+  const [addCartItem, setAddCartItem] = useState([]);
+  const [removeCartItem, setRemoveCartItem] = useState([]);
+
   return (
     <FilterContext.Provider
       value={{
@@ -36,6 +41,12 @@ export function FilterProvider({ children }) {
         setMaxPrice,
         sortBy,
         setSortBy,
+        cartItem,
+        setCartItem,
+        addCartItem,
+        setAddCartItem,
+        removeCartItem,
+        setRemoveCartItem,
       }}
     >
       {children}

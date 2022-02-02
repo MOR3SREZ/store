@@ -26,7 +26,7 @@ const SortProducts = () => {
           onChange={handleChange}
           label='feature'
         >
-          <MenuItem value=''>
+          <MenuItem value={'none'}>
             <em>None</em>
           </MenuItem>
           <MenuItem value={'price-down'}>Price: Low to High</MenuItem>
