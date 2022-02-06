@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { FilterProvider } from './components/context/filter_context';
 
+//styles
 import './index.css';
 
 ReactDOM.render(

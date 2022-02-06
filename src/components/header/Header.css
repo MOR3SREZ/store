@@ -8,6 +8,9 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+nav a {
+  text-decoration: none;
+}
 /*header logo */
 
 .logo {
@@ -17,6 +20,7 @@ nav {
 }
 .logo h1 {
   font-size: 2rem;
+  color: #fff;
 }
 .logo h1 span {
   color: var(--primary);

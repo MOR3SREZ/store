@@ -2,9 +2,10 @@ import React from 'react';
 
 //styles
 import './ToastifyItem.css';
-const ToastifyItem = ({ item }) => {
+const ToastifyItem = ({ item, kind }) => {
   return (
     <div className='toast-container'>
+      <p>{kind}</p>
       <div className='toast-picture'>
         <img src={item.image} alt='' />
       </div>

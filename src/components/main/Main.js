@@ -21,11 +21,6 @@ const Main = ({ data, searchFilter }) => {
   const { category, checked } = filterCategory;
   const { Star } = filterStar;
   const { price } = filterPrice;
-  // let f = 0;
-
-  // const sortData = useCallback(() => {
-
-  // }, []);
 
   useEffect(() => {
     if (sortBy === 'none' || sortBy === '') {

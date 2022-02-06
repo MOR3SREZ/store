@@ -4,17 +4,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FilterContext } from '../context/filter_context';
 import ToastifyItem from './ToastifyItem/ToastifyItem';
 
+import './Toastify.css';
+
 const Toastify = () => {
   const { removeCartItem, addCartItem } = useContext(FilterContext);
   useEffect(() => {
     if (addCartItem.length !== 0) {
-      toast.success(<ToastifyItem item={addCartItem} />, {
+      toast.success(<ToastifyItem item={addCartItem} kind={'Added'} />, {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
         progress: undefined,
       });
     }
@@ -22,13 +24,13 @@ const Toastify = () => {
 
   useEffect(() => {
     if (removeCartItem.length !== 0) {
-      toast.error(<ToastifyItem item={removeCartItem} />, {
+      toast.error(<ToastifyItem item={removeCartItem} kind={'Removed'} />, {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
         progress: undefined,
       });
     }
