@@ -16,7 +16,7 @@ nav a {
 .logo {
   display: flex;
   justify-content: baseline;
-  width: 400px;
+  width: 350px;
 }
 .logo h1 {
   font-size: 2rem;
@@ -34,7 +34,8 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 3rem;
+
+  /* margin: 3rem; */
 }
 .search input {
   width: 60%;
@@ -64,7 +65,7 @@ nav a {
 /*header badge */
 .badge {
   margin-right: 3rem;
-  width: 150px;
+  width: 350px;
 }
 
 .badge button {

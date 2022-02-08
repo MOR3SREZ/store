@@ -14,13 +14,13 @@ export default function IconCheckboxes({ id }) {
   const { data } = useFetch('https://fakestoreapi.com/products/' + id);
 
   const handleAdd = (id) => {
-    setAddCartItem(data);
+    setAddCartItem(data, (data.count = 1));
     setRemoveCartItem([]);
 
     setCartItem((prev) => [...prev, id]);
   };
   const handleRemove = (id) => {
-    setRemoveCartItem(data);
+    setRemoveCartItem(data, (data.count = 1));
     setAddCartItem([]);
 
     let remove = cartItem.filter((item) => item !== id);
@@ -34,6 +34,7 @@ export default function IconCheckboxes({ id }) {
       handleRemove(data);
     }
   };
+  console.log(cartItem);
 
   return (
     <div>
