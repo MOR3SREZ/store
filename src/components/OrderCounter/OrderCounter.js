@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import { FilterContext } from '../context/filter_context';
+import { ACTIONS } from '../context/filter_context';
 //styles
 import './OrderCounter.css';
-const OrderCounter = ({ setCounter, item }) => {
+const OrderCounter = ({ id }) => {
+  const { cartItemDispatch } = useContext(FilterContext);
+
   const [count, setCount] = useState(1);
+
   useEffect(() => {
-    setCounter(count);
-    item.count = count;
-  }, [count]);
+    cartItemDispatch({
+      type: ACTIONS.SET_QTY,
+      payload: { id: id, qty: count },
+    });
+  }, [cartItemDispatch, count, id]);
 
   return (
     <div className='order-counter'>

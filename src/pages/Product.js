@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
-import ProductCarousel from '../components/Carousel/Carousel';
 import { useFetch } from '../components/Hooks/useFetch';
 
 //styles
@@ -17,7 +16,7 @@ const Product = () => {
       {data && (
         <div className='product-page'>
           <div className='image-slider'>
-            <ProductCarousel ax={data.image} />
+            <img src={data.image} alt='some' />
           </div>
           <div className='product-introduction'>
             <div className='info'>

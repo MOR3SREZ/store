@@ -11,7 +11,7 @@ import { FilterContext } from '../context/filter_context';
 
 const Header = ({ setSearchFilter }) => {
   const [inputValue, setInputValue] = useState('');
-  const { cartItem } = useContext(FilterContext);
+  const { cartItems } = useContext(FilterContext);
 
   useEffect(() => {
     setSearchFilter(inputValue);
@@ -45,7 +45,7 @@ const Header = ({ setSearchFilter }) => {
               <div className='cart-icon'>
                 <img src={cartIcon} alt='cart icon' />
                 <div className='badge-count'>
-                  <span> {cartItem.length}</span>
+                  <span> {cartItems.length}</span>
                 </div>
               </div>
 

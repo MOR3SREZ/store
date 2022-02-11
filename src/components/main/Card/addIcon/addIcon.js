@@ -5,42 +5,38 @@ import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import { useFetch } from '../../../Hooks/useFetch';
-import { FilterContext } from '../../../context/filter_context';
+import { ACTIONS, FilterContext } from '../../../context/filter_context';
 
-export default function IconCheckboxes({ id }) {
-  const { setCartItem, cartItem, setRemoveCartItem, setAddCartItem } =
-    useContext(FilterContext);
-
+export default function IconCheckboxes({ id, check }) {
+  const { cartItemDispatch } = useContext(FilterContext);
   const { data } = useFetch('https://fakestoreapi.com/products/' + id);
 
-  const handleAdd = (id) => {
-    setAddCartItem(data, (data.count = 1));
-    setRemoveCartItem([]);
-
-    setCartItem((prev) => [...prev, id]);
+  const handleAdd = (item) => {
+    cartItemDispatch({ type: ACTIONS.ADD_TO_CART, payload: { item: item } });
   };
-  const handleRemove = (id) => {
-    setRemoveCartItem(data, (data.count = 1));
-    setAddCartItem([]);
-
-    let remove = cartItem.filter((item) => item !== id);
-    setCartItem(remove);
+  const handleRemove = (item) => {
+    cartItemDispatch({
+      type: ACTIONS.REMOVE_FROM_CART,
+      payload: { id: item.id },
+    });
   };
 
   const handleClick = (e) => {
+    console.log(e.target.checked, id);
     if (e.target.checked) {
       handleAdd(data);
     } else if (!e.target.checked) {
       handleRemove(data);
+      // setCartItem(cartItem.filter((e) => e.id !== id));
     }
   };
-  console.log(cartItem);
 
   return (
     <div>
       <Tooltip TransitionComponent={Zoom} title='Add to Cart'>
         <Checkbox
           icon={<AddShoppingCartIcon />}
+          checked={check}
           checkedIcon={<AddTaskIcon />}
           onClick={(e) => handleClick(e)}
           sx={{

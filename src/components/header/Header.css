@@ -7,6 +7,9 @@ nav {
   color: white;
   justify-content: space-between;
   align-items: center;
+  /* position: fixed;
+  z-index: 999;
+  top: 0; */
 }
 nav a {
   text-decoration: none;

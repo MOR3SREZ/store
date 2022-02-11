@@ -17,6 +17,7 @@ const Main = ({ data, searchFilter }) => {
     minPrice,
     maxPrice,
     sortBy,
+    cartItems,
   } = React.useContext(FilterContext);
   const { category, checked } = filterCategory;
   const { Star } = filterStar;
@@ -55,15 +56,15 @@ const Main = ({ data, searchFilter }) => {
         .filter((product) => {
           if (Star === '') {
             return product;
-          } else if (Star === 'star-4') {
+          } else if (Star === 'item-4') {
             return product.rating.rate >= 4;
-          } else if (Star === 'star-3') {
+          } else if (Star === 'item-3') {
             return product.rating.rate >= 3;
-          } else if (Star === 'star-2') {
+          } else if (Star === 'item-2') {
             return product.rating.rate >= 2;
-          } else if (Star === 'star-1') {
+          } else if (Star === 'item-1') {
             return product.rating.rate >= 1;
-          } else if (Star === 'clear') {
+          } else if (Star === 'item-Clear') {
             return product;
           }
         })
@@ -98,16 +99,75 @@ const Main = ({ data, searchFilter }) => {
             return product;
           }
         })
-        .map(({ id, image, title, price, rating }) => (
-          <Card
-            key={id}
-            image={image}
-            title={title}
-            price={price}
-            rating={rating}
-            id={id}
-          />
-        ))}
+        .map(({ id, image, title, price, rating }) => {
+          if (cartItems.length === 0) {
+            return (
+              <Card
+                key={id}
+                image={image}
+                title={title}
+                price={price}
+                rating={rating}
+                id={id}
+                check={false}
+              />
+            );
+          } else if (cartItems.length !== 0) {
+            if (cartItems.find((e) => e.id === id)) {
+              return (
+                <Card
+                  key={id}
+                  image={image}
+                  title={title}
+                  price={price}
+                  rating={rating}
+                  id={id}
+                  check={true}
+                />
+              );
+            } else if (cartItems.find((e) => e.id !== id))
+              return (
+                <Card
+                  key={id}
+                  image={image}
+                  title={title}
+                  price={price}
+                  rating={rating}
+                  id={id}
+                  check={false}
+                />
+              );
+
+            // if (id === id) {
+            //   console.log('shit', id);
+
+            //   return (
+            //     <Card
+            //       key={id}
+            //       image={image}
+            //       title={title}
+            //       price={price}
+            //       rating={rating}
+            //       id={id}
+            //       check={'true'}
+            //     />
+            //   );
+            // } else if (id !== id) {
+            //   console.log('no', id);
+            //   return (
+            //     <Card
+            //       key={id}
+            //       image={image}
+            //       title={title}
+            //       price={price}
+            //       rating={rating}
+            //       id={id}
+            //       check={'false'}
+            //     />
+            //   );
+            // }
+          }
+        })}
       {/* {f === 0 && (
         <div className='filter-error'>
           <h4>there is no product with the current filters you selected</h4>

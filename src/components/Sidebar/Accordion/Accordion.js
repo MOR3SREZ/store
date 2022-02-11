@@ -9,6 +9,7 @@ import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import PriceFilter from '../PriceFilter/PriceFilter';
 import { FilterContext } from '../../context/filter_context';
 import CustomPriceFilter from '../PriceFilter/CustomPriceFilter/CustomPriceFilter';
+import StarRatingFilter from '../StarRating/StarRatingFilter';
 
 export default function SimpleAccordion() {
   const { setFilterStar } = React.useContext(FilterContext);
@@ -31,6 +32,7 @@ export default function SimpleAccordion() {
     '$100 to $200',
     '$200 & Above',
   ];
+  const ProductRatingFilter = ['Clear', '4', '3', '2', '1'];
   return (
     <div>
       <Accordion>
@@ -54,26 +56,7 @@ export default function SimpleAccordion() {
           <Typography>Customer Review</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <div
-            style={{
-              margin: '0px 0px 15px 0px ',
-              textDecoration: 'underLine',
-              cursor: 'pointer',
-            }}
-          >
-            <span
-              id='clear'
-              onClick={(e) => {
-                clickHandler(e);
-              }}
-            >
-              clear
-            </span>
-          </div>
-          <StarRating rate={4} />
-          <StarRating rate={3} />
-          <StarRating rate={2} />
-          <StarRating rate={1} />
+          <StarRatingFilter items={ProductRatingFilter} />
         </AccordionDetails>
       </Accordion>
       <Accordion>

@@ -12,8 +12,8 @@ const Toastify = () => {
     if (addCartItem.length !== 0) {
       toast.success(<ToastifyItem item={addCartItem} kind={'Added'} />, {
         position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
+        autoClose: 1000,
+        hideProgressBar: true,
         closeOnClick: false,
         pauseOnHover: false,
         draggable: false,
@@ -26,8 +26,8 @@ const Toastify = () => {
     if (removeCartItem.length !== 0) {
       toast.error(<ToastifyItem item={removeCartItem} kind={'Removed'} />, {
         position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
+        autoClose: 1000,
+        hideProgressBar: true,
         closeOnClick: false,
         pauseOnHover: false,
         draggable: false,

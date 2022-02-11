@@ -17,7 +17,7 @@ const Home = () => {
   const [searchFilter, setSearchFilter] = useState();
   return (
     <>
-      <Toastify cartItem={cartItem} />
+      {/* <Toastify cartItem={cartItem} /> */}
       <Header setSearchFilter={setSearchFilter} />
       <SetProducts />
       <main>

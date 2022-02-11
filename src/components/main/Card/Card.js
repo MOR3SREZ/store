@@ -5,7 +5,7 @@ import IconCheckboxes from './addIcon/addIcon';
 //Styles
 import './Card.css';
 
-const Card = ({ id, image, title, price, rating }) => {
+const Card = ({ id, image, title, price, rating, check }) => {
   return (
     <div className='card'>
       <div className='product-image'>
@@ -25,7 +25,7 @@ const Card = ({ id, image, title, price, rating }) => {
         </div>
       </div>
       <div className='add-icon'>
-        <IconCheckboxes id={id} />
+        <IconCheckboxes id={id} check={check} />
       </div>
     </div>
   );
