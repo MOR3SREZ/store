@@ -1,17 +1,17 @@
 .product-page {
-  display: flex;
-  height: auto;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
+.product {
+  height: 85vh;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
 .image-slider {
-  /* border: 1px solid #333; */
-  width: 450px;
-  max-height: 100vh;
-  /* height: 500px; */
+  width: 400px;
 }
 .image-slider img {
   max-width: 100%;
@@ -21,7 +21,7 @@
 
 .product-introduction {
   width: 50%;
-  height: 90%;
+  height: 85%;
   padding-top: 3rem;
   padding-left: 6rem;
   display: flex;

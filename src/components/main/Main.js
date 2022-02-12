@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 //Components
 import Card from './Card/Card';
@@ -10,7 +10,7 @@ import './Main.css';
 
 const Main = ({ data, searchFilter }) => {
   const [products, setProducts] = useState([]);
-  const { filterProducts, cartItems } = React.useContext(FilterContext);
+  const { filterProducts, cartItems } = useContext(FilterContext);
   const {
     categoryFilter,
     starFilter,
@@ -135,35 +135,6 @@ const Main = ({ data, searchFilter }) => {
                   check={false}
                 />
               );
-
-            // if (id === id) {
-            //   console.log('shit', id);
-
-            //   return (
-            //     <Card
-            //       key={id}
-            //       image={image}
-            //       title={title}
-            //       price={price}
-            //       rating={rating}
-            //       id={id}
-            //       check={'true'}
-            //     />
-            //   );
-            // } else if (id !== id) {
-            //   console.log('no', id);
-            //   return (
-            //     <Card
-            //       key={id}
-            //       image={image}
-            //       title={title}
-            //       price={price}
-            //       rating={rating}
-            //       id={id}
-            //       check={'false'}
-            //     />
-            //   );
-            // }
           }
         })}
       {/* {f === 0 && (

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { FilterContext } from '../context/filter_context';
+import { FilterContext, ACTIONS } from '../context/filter_context';
 import OrderCounter from '../OrderCounter/OrderCounter';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const CartOrders = () => {
-  const { cartItems } = useContext(FilterContext);
+  const { cartItems, cartItemDispatch } = useContext(FilterContext);
 
   return (
     <ul>
@@ -31,6 +32,25 @@ const CartOrders = () => {
                     Total: $ {(cartItem.item.price * cartItem.qty).toFixed(2)}
                   </p>
                 </div>
+                <DeleteIcon
+                  onClick={() =>
+                    cartItemDispatch({
+                      type: ACTIONS.REMOVE_FROM_CART,
+                      payload: { id: cartItem.item.id },
+                    })
+                  }
+                  sx={{
+                    fontSize: 25,
+                    width: '35px',
+                    height: '35px',
+                    padding: '5px',
+                    '&.MuiSvgIcon-root:hover': {
+                      cursor: 'pointer',
+                      backgroundColor: '#efefef',
+                      borderRadius: '50%',
+                    },
+                  }}
+                />
               </div>
             </li>
           );

@@ -1,20 +1,30 @@
-import React, { useEffect } from 'react';
-
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+//components
 import { useFetch } from '../components/Hooks/useFetch';
+import { ACTIONS, FilterContext } from '../components/context/filter_context';
+import PageHeader from '../components/PageHeader/PageHeader';
 
 //styles
 import './Product.css';
 
 const Product = () => {
+  const { cartItems, cartItemDispatch } = useContext(FilterContext);
   const { id } = useParams();
-  const { data, loading } = useFetch('https://fakestoreapi.com/products/' + id);
+  const { data, loading, error } = useFetch(
+    'https://fakestoreapi.com/products/' + id
+  );
 
   useEffect(() => {}, []);
   return (
-    <>
+    <div className='product-page'>
+      <PageHeader name={'Products'} />
+
+      {loading && <h2>Loading ...</h2>}
+      {error && <h2>{error}</h2>}
       {data && (
-        <div className='product-page'>
+        <div className='product'>
           <div className='image-slider'>
             <img src={data.image} alt='some' />
           </div>
@@ -36,13 +46,42 @@ const Product = () => {
               </div>
             </div>
             <div className='buttons'>
-              <button className='add-btn'>ADD TO CART</button>
-              <button className='buy-btn'>BUY NOW</button>
+              {cartItems.some((item) => item.id === data.id) ? (
+                <button
+                  className='add-btn'
+                  onClick={() => {
+                    cartItemDispatch({
+                      type: ACTIONS.REMOVE_FROM_CART,
+                      payload: { id: data.id },
+                    });
+                  }}
+                >
+                  REMOVE FROM CART
+                </button>
+              ) : (
+                <button
+                  className='add-btn'
+                  onClick={() => {
+                    cartItemDispatch({
+                      type: ACTIONS.ADD_TO_CART,
+                      payload: { item: data },
+                    });
+                  }}
+                >
+                  ADD TO CART
+                </button>
+              )}
+              <button
+                className='buy-btn'
+                onClick={(e) => (e.target.innerText = 'Ordering...')}
+              >
+                BUY NOW
+              </button>
             </div>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

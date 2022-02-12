@@ -1,0 +1,84 @@
+nav {
+  width: 100%;
+  max-height: auto;
+  padding: 10px;
+  background-color: var(--secondary);
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  /* position: fixed;
+    z-index: 999;
+    top: 0; */
+}
+nav a {
+  text-decoration: none;
+}
+/*header logo */
+
+.logo {
+  display: flex;
+  justify-content: baseline;
+  width: 250px;
+}
+.logo h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+.logo h1 span {
+  color: var(--primary);
+}
+.logo img {
+  height: 40px;
+}
+/* header-page-name */
+
+.page-name h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  width: 100%;
+}
+
+/*header badge */
+.badge {
+  display: flex;
+  justify-content: flex-end;
+  width: 250px;
+}
+
+.badge button {
+  padding: 0px 15px;
+  border-radius: 8px;
+  background-color: var(--primary);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.cart-icon {
+  position: relative;
+}
+.badge-count {
+  position: absolute;
+  top: 5px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: var(--secondary);
+  background-color: #d9534f;
+  font-weight: 500;
+  text-align: center;
+  right: 38%;
+  left: 38%;
+}
+.badge button img {
+  height: 45px;
+  width: 45px;
+  margin: 2px 5px 0 0;
+  color: #fff;
+}
+.badge-cart {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

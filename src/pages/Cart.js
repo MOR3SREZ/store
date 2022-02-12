@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import CartOrders from '../components/CartOrders/CartOrders';
 import { FilterContext } from '../components/context/filter_context';
+import PageHeader from '../components/PageHeader/PageHeader';
 
 //styles
 import './Cart.css';
@@ -19,11 +20,26 @@ const Cart = () => {
   }, [cartItems]);
   return (
     <div className='cart'>
-      <div className='orders'>
-        <h3>orders</h3>
-        <CartOrders />
-      </div>
-      <div className='orders-total'> the total: ${totalPrice.toFixed(2)}</div>
+      <PageHeader name={'Shopping Cart'} />
+      {cartItems.length > 0 ? (
+        <>
+          <div className='orders'>
+            <CartOrders />
+          </div>
+          <div className='orders-total'>
+            <span>Shopping cart total: ${totalPrice.toFixed(2)}</span>
+
+            <button
+              className='buy-btn'
+              onClick={(e) => (e.target.innerText = 'Ordering...')}
+            >
+              BUY NOW
+            </button>
+          </div>
+        </>
+      ) : (
+        <h2 className='empty-error'>There is no product to order</h2>
+      )}
     </div>
   );
 };
