@@ -1,22 +1,23 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import StarRating from '../StarRating/StarRating';
+
+//components
 import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import PriceFilter from '../PriceFilter/PriceFilter';
-import { FilterContext } from '../../context/filter_context';
 import CustomPriceFilter from '../PriceFilter/CustomPriceFilter/CustomPriceFilter';
+import { ACTIONS, FilterContext } from '../../context/filter_context';
 import StarRatingFilter from '../StarRating/StarRatingFilter';
 
-export default function SimpleAccordion() {
-  const { setFilterStar } = React.useContext(FilterContext);
+//Styles
+import './Accordion.css';
 
-  const clickHandler = (e) => {
-    setFilterStar({ Star: e.target.id });
-  };
+export default function SimpleAccordion() {
+  const { filterProductsDispatch } = useContext(FilterContext);
+
   const ProductCategory = [
     'All',
     'electronics',
@@ -24,6 +25,7 @@ export default function SimpleAccordion() {
     "men's clothing",
     "women's clothing",
   ];
+
   const ProductPriceFilter = [
     'Any Price',
     'Under $25',
@@ -32,9 +34,22 @@ export default function SimpleAccordion() {
     '$100 to $200',
     '$200 & Above',
   ];
+
   const ProductRatingFilter = ['Clear', '4', '3', '2', '1'];
+
   return (
     <div>
+      <div className='clear-filters'>
+        <button
+          onClick={() =>
+            filterProductsDispatch({
+              type: ACTIONS.CLEAR_FILTER,
+            })
+          }
+        >
+          Clear All Filters
+        </button>
+      </div>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

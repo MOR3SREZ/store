@@ -1,10 +1,19 @@
-import { createContext, useState, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
 
 export const FilterContext = createContext();
+
+//? -----------cartItems Reducer----------
 export const ACTIONS = {
   ADD_TO_CART: 'add-to-cart',
   REMOVE_FROM_CART: 'remove-from-cart',
   SET_QTY: 'set-qty',
+  CATEGORY_FILTER: 'category-filter',
+  STAR_FILTER: 'star-filter',
+  PRICE_FILTER: 'price-filter',
+  MAX_PRICE_FILTER: 'max-price-filter',
+  MIN_PRICE_FILTER: 'min-price-filter',
+  CLEAR_FILTER: 'clear-filter',
+  SORT_BY: 'sort-by',
 };
 
 const cartItemReducer = (cartItems, action) => {
@@ -28,45 +37,59 @@ const NewItem = (item) => {
   return { id: item.id, item: item, qty: 1 };
 };
 
+//? ----------FilterProducts Reducer----------
+const initialValues = {
+  categoryFilter: '',
+  starFilter: '',
+  priceFilter: '',
+  maxPriceFilter: 0,
+  minPriceFilter: 0,
+  sortBy: '',
+};
+const filterReducer = (filterProducts, action) => {
+  switch (action.type) {
+    case ACTIONS.CATEGORY_FILTER:
+      return { ...filterProducts, categoryFilter: action.payload };
+    case ACTIONS.STAR_FILTER:
+      return { ...filterProducts, starFilter: action.payload };
+    case ACTIONS.PRICE_FILTER:
+      return { ...filterProducts, priceFilter: action.payload };
+    case ACTIONS.MAX_PRICE_FILTER:
+      return { ...filterProducts, maxPriceFilter: action.payload };
+    case ACTIONS.MIN_PRICE_FILTER:
+      return { ...filterProducts, minPriceFilter: action.payload };
+    case ACTIONS.SORT_BY:
+      return { ...filterProducts, sortBy: action.payload };
+    case ACTIONS.CLEAR_FILTER:
+      return {
+        categoryFilter: '',
+        starFilter: '',
+        priceFilter: '',
+        maxPriceFilter: 0,
+        minPriceFilter: 0,
+        sortBy: '',
+      };
+
+    default:
+      return filterProducts;
+  }
+};
+
 export function FilterProvider({ children }) {
-  const [filterCategory, setFilterCategory] = useState({
-    category: '',
-    checked: false,
-  });
-
-  const [filterStar, setFilterStar] = useState({
-    Star: '',
-    checkedStar: false,
-  });
-
-  const [filterPrice, setFilterPrice] = useState({
-    price: '',
-  });
-  const [maxPrice, setMaxPrice] = useState(0);
-  const [minPrice, setMinPrice] = useState(0);
-
-  const [sortBy, setSortBy] = useState('');
-
+  //* ------Reducers------
   const [cartItems, cartItemDispatch] = useReducer(cartItemReducer, []);
-  console.log(cartItems);
+  const [filterProducts, filterProductsDispatch] = useReducer(
+    filterReducer,
+    initialValues
+  );
 
   return (
     <FilterContext.Provider
       value={{
-        filterCategory,
-        setFilterCategory,
-        filterStar,
-        setFilterStar,
-        filterPrice,
-        setFilterPrice,
-        minPrice,
-        setMinPrice,
-        maxPrice,
-        setMaxPrice,
-        sortBy,
-        setSortBy,
         cartItems,
         cartItemDispatch,
+        filterProducts,
+        filterProductsDispatch,
       }}
     >
       {children}

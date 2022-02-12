@@ -3,19 +3,24 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import { FilterContext } from '../../context/filter_context';
+import { ACTIONS, FilterContext } from '../../context/filter_context';
 
 export default function PriceFilter({ items }) {
-  const { setFilterPrice, setMaxPrice, setMinPrice } =
-    React.useContext(FilterContext);
+  const { filterProductsDispatch } = React.useContext(FilterContext);
 
   const handleChange = (e) => {
-    setFilterPrice({
-      price: e.target.id,
-      checked: e.target.checked,
+    filterProductsDispatch({
+      type: ACTIONS.PRICE_FILTER,
+      payload: e.target.id,
     });
-    setMaxPrice('');
-    setMinPrice('');
+    filterProductsDispatch({
+      type: ACTIONS.MAX_PRICE_FILTER,
+      payload: '',
+    });
+    filterProductsDispatch({
+      type: ACTIONS.MIN_PRICE_FILTER,
+      payload: '',
+    });
   };
 
   return (

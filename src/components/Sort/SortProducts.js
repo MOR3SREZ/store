@@ -1,18 +1,23 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { FilterContext } from '../context/filter_context';
+
+//components
+import { ACTIONS, FilterContext } from '../context/filter_context';
 
 //styles
 import './SortProducts.css';
 
 const SortProducts = () => {
-  const { sortBy, setSortBy } = React.useContext(FilterContext);
+  const { filterProducts, filterProductsDispatch } = useContext(FilterContext);
 
-  const handleChange = (event) => {
-    setSortBy(event.target.value);
+  const handleChange = (e) => {
+    filterProductsDispatch({
+      type: ACTIONS.SORT_BY,
+      payload: e.target.value,
+    });
   };
 
   return (
@@ -22,7 +27,7 @@ const SortProducts = () => {
         <Select
           labelId='demo-simple-select-standard-label'
           id='demo-simple-select-standard'
-          value={sortBy}
+          value={filterProducts.sortBy}
           onChange={handleChange}
           label='feature'
         >

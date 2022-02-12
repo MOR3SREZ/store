@@ -3,22 +3,22 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import { FilterContext } from '../../context/filter_context';
+import { ACTIONS, FilterContext } from '../../context/filter_context';
 import StarRating from './StarRating';
 
 const StarRatingFilter = ({ items }) => {
-  const { setFilterStar } = useContext(FilterContext);
+  const { filterProductsDispatch } = useContext(FilterContext);
 
   const clickHandler = (e) => {
     if (e.target.checked) {
-      setFilterStar({
-        Star: e.target.id,
-        checkedStar: true,
+      filterProductsDispatch({
+        type: ACTIONS.STAR_FILTER,
+        payload: e.target.id,
       });
     } else {
-      setFilterStar({
-        Star: '',
-        checkedStar: false,
+      filterProductsDispatch({
+        type: ACTIONS.STAR_FILTER,
+        payload: '',
       });
     }
   };

@@ -10,23 +10,19 @@ import './Main.css';
 
 const Main = ({ data, searchFilter }) => {
   const [products, setProducts] = useState([]);
+  const { filterProducts, cartItems } = React.useContext(FilterContext);
   const {
-    filterCategory,
-    filterStar,
-    filterPrice,
-    minPrice,
-    maxPrice,
+    categoryFilter,
+    starFilter,
+    priceFilter,
+    minPriceFilter,
+    maxPriceFilter,
     sortBy,
-    cartItems,
-  } = React.useContext(FilterContext);
-  const { category, checked } = filterCategory;
-  const { Star } = filterStar;
-  const { price } = filterPrice;
+  } = filterProducts;
 
   useEffect(() => {
     if (sortBy === 'none' || sortBy === '') {
       let list = data.sort((a, b) => a.id - b.id);
-
       setProducts([...list]);
     } else if (sortBy === 'price-down') {
       let list = data.sort((a, b) => a.price - b.price);
@@ -47,46 +43,48 @@ const Main = ({ data, searchFilter }) => {
     <div className='product-container'>
       {products
         .filter((product) => {
-          if (category === '' || category === 'All') {
+          if (categoryFilter === '' || categoryFilter === 'All') {
             return product;
-          } else if (product.category === category && checked) {
+          } else if (product.category === categoryFilter) {
             return product;
           }
         })
         .filter((product) => {
-          if (Star === '') {
+          if (starFilter === '') {
             return product;
-          } else if (Star === 'item-4') {
+          } else if (starFilter === 'item-4') {
             return product.rating.rate >= 4;
-          } else if (Star === 'item-3') {
+          } else if (starFilter === 'item-3') {
             return product.rating.rate >= 3;
-          } else if (Star === 'item-2') {
+          } else if (starFilter === 'item-2') {
             return product.rating.rate >= 2;
-          } else if (Star === 'item-1') {
+          } else if (starFilter === 'item-1') {
             return product.rating.rate >= 1;
-          } else if (Star === 'item-Clear') {
+          } else if (starFilter === 'item-Clear') {
             return product;
           }
         })
 
         .filter((product) => {
-          if (price === '') {
+          if (priceFilter === '') {
             return product;
-          } else if (price === 'Any Price') {
+          } else if (priceFilter === 'Any Price') {
             return product;
-          } else if (price === 'Under $25') {
+          } else if (priceFilter === 'Under $25') {
             return 0 <= product.price && product.price <= 25.0;
-          } else if (price === '$25 to $50') {
+          } else if (priceFilter === '$25 to $50') {
             return 25.0 <= product.price && product.price <= 50.0;
-          } else if (price === '$50 to $100') {
+          } else if (priceFilter === '$50 to $100') {
             return 50.0 <= product.price && product.price <= 100.0;
-          } else if (price === '$100 to $200') {
+          } else if (priceFilter === '$100 to $200') {
             return 100.0 <= product.price && product.price <= 200.0;
-          } else if (price === '$200 & Above') {
+          } else if (priceFilter === '$200 & Above') {
             return 200.0 <= product.price;
-          } else if (price === 'custom-price') {
-            return minPrice <= product.price && product.price <= maxPrice;
-          } else if (minPrice === '' && maxPrice === '') {
+          } else if (priceFilter === 'custom-price') {
+            return (
+              minPriceFilter <= product.price && product.price <= maxPriceFilter
+            );
+          } else if (minPriceFilter === '' && maxPriceFilter === '') {
             return product;
           }
         })

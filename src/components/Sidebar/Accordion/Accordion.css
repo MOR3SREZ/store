@@ -1,0 +1,15 @@
+.clear-filters {
+  width: 100%;
+  margin: 5px 5px 15px;
+}
+.clear-filters button {
+  border: none;
+  padding: 10px 10px;
+  cursor: pointer;
+  background-color: var(--primary);
+  font-weight: 500;
+  border-radius: 8px;
+}
+.clear-filters button:hover {
+  background-color: #da9f53;
+}

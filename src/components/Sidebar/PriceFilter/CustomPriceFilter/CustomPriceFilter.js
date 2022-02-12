@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { FilterContext } from '../../../context/filter_context';
+import { ACTIONS, FilterContext } from '../../../context/filter_context';
 //styles
 import './CustomPriceFilter.css';
 
 const CustomPriceFilter = () => {
-  const { setFilterPrice, setMaxPrice, setMinPrice, minPrice, maxPrice } =
+  const { filterProductsDispatch, filterProducts } =
     React.useContext(FilterContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setFilterPrice({
-      price: e.target.id,
+    filterProductsDispatch({
+      type: ACTIONS.PRICE_FILTER,
+      payload: e.target.id,
     });
   };
 
@@ -23,10 +24,15 @@ const CustomPriceFilter = () => {
           name='min'
           id='min'
           min={0}
-          value={minPrice}
+          value={filterProducts.minPriceFilter}
           max={99999}
           placeholder='$ Min'
-          onChange={(e) => setMinPrice(e.target.value)}
+          onChange={(e) =>
+            filterProductsDispatch({
+              type: ACTIONS.MIN_PRICE_FILTER,
+              payload: e.target.value,
+            })
+          }
         />
 
         <input
@@ -34,10 +40,15 @@ const CustomPriceFilter = () => {
           name='max'
           id='max'
           min={0}
-          value={maxPrice}
+          value={filterProducts.maxPriceFilter}
           max={99999}
           placeholder='$ Max'
-          onChange={(e) => setMaxPrice(e.target.value)}
+          onChange={(e) =>
+            filterProductsDispatch({
+              type: ACTIONS.MAX_PRICE_FILTER,
+              payload: e.target.value,
+            })
+          }
         />
         <button>Go</button>
       </form>
