@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
+
+//components
 import { FilterContext } from '../context/filter_context';
 import { ACTIONS } from '../context/filter_context';
+
 //styles
 import './OrderCounter.css';
 const OrderCounter = ({ id }) => {
@@ -18,7 +21,6 @@ const OrderCounter = ({ id }) => {
   return (
     <div className='order-counter'>
       <button
-        disabled={false}
         className='decrease'
         onClick={() => setCount(count !== 1 ? count - 1 : 1)}
       >

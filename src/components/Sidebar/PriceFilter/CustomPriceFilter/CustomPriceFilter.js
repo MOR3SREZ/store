@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+//components
 import { ACTIONS, FilterContext } from '../../../context/filter_context';
+
 //styles
 import './CustomPriceFilter.css';
 
 const CustomPriceFilter = () => {
-  const { filterProductsDispatch, filterProducts } =
-    React.useContext(FilterContext);
+  const { filterProductsDispatch, filterProducts } = useContext(FilterContext);
 
   const submitHandler = (e) => {
     e.preventDefault();

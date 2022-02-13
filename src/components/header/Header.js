@@ -1,4 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+//components
+import { FilterContext } from '../context/filter_context';
 
 //styles
 import './Header.css';
@@ -6,8 +10,6 @@ import shopHeader from '../../assets/shop.jpg';
 import shopIcon from '../../assets/shop-icon.png';
 import cartIcon from '../../assets/online-cart.svg';
 import searchIcon from '../../assets/search.svg';
-import { Link } from 'react-router-dom';
-import { FilterContext } from '../context/filter_context';
 
 const Header = ({ setSearchFilter }) => {
   const [inputValue, setInputValue] = useState('');

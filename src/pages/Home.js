@@ -1,15 +1,13 @@
-import React from 'react';
+import { useState } from 'react';
+
+//components
 import { useFetch } from '../components/Hooks/useFetch';
 import Header from '../components/header/Header';
 import Main from '../components/main/Main';
 import Sidebar from '../components/Sidebar/Sidebar';
 import SetProducts from '../components/Sort/SortProducts';
-import { useState, useContext } from 'react';
-import Toastify from '../components/Toastify/Toastify';
-import { FilterContext } from '../components/context/filter_context';
 
 const Home = () => {
-  const { cartItem } = useContext(FilterContext);
   const { data, error, loading } = useFetch(
     'https://fakestoreapi.com/products'
   );
@@ -17,7 +15,6 @@ const Home = () => {
   const [searchFilter, setSearchFilter] = useState();
   return (
     <>
-      {/* <Toastify cartItem={cartItem} /> */}
       <Header setSearchFilter={setSearchFilter} />
       <SetProducts />
       <main>

@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 //components
-import shopIcon from '../../assets/shop-icon.png';
-import cartIcon from '../../assets/online-cart.svg';
 import { Link } from 'react-router-dom';
 import { FilterContext } from '../context/filter_context';
 
 //styles
 import './PageHeader.css';
+import cartIcon from '../../assets/online-cart.svg';
+import shopIcon from '../../assets/shop-icon.png';
 
 const PageHeader = ({ name }) => {
   const { cartItems } = useContext(FilterContext);

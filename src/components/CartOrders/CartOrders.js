@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-import { FilterContext, ACTIONS } from '../context/filter_context';
 import OrderCounter from '../OrderCounter/OrderCounter';
 import DeleteIcon from '@mui/icons-material/Delete';
+
+//components
+import { FilterContext, ACTIONS } from '../context/filter_context';
 
 const CartOrders = () => {
   const { cartItems, cartItemDispatch } = useContext(FilterContext);

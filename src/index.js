@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+//components
 import App from './App';
 import { FilterProvider } from './components/context/filter_context';
 

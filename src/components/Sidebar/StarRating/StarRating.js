@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
-import { FilterContext } from '../../context/filter_context';
 
 //styles
 import './StarRating.css';

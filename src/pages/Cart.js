@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
+
+//components
 import CartOrders from '../components/CartOrders/CartOrders';
 import { FilterContext } from '../components/context/filter_context';
 import PageHeader from '../components/PageHeader/PageHeader';
@@ -8,8 +10,8 @@ import './Cart.css';
 
 const Cart = () => {
   const { cartItems } = useContext(FilterContext);
-
   const [totalPrice, setTotalPrice] = useState(0);
+
   useEffect(() => {
     setTotalPrice(
       cartItems.reduce(
@@ -18,6 +20,7 @@ const Cart = () => {
       )
     );
   }, [cartItems]);
+
   return (
     <div className='cart'>
       <PageHeader name={'Shopping Cart'} />

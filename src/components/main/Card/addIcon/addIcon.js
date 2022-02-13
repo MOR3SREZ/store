@@ -4,6 +4,8 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import AddTaskIcon from '@mui/icons-material/AddTask';
+
+//components
 import { useFetch } from '../../../Hooks/useFetch';
 import { ACTIONS, FilterContext } from '../../../context/filter_context';
 
@@ -22,12 +24,10 @@ export default function IconCheckboxes({ id, check }) {
   };
 
   const handleClick = (e) => {
-    console.log(e.target.checked, id);
     if (e.target.checked) {
       handleAdd(data);
     } else if (!e.target.checked) {
       handleRemove(data);
-      // setCartItem(cartItem.filter((e) => e.id !== id));
     }
   };
 
