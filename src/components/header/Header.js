@@ -25,37 +25,47 @@ const Header = ({ setSearchFilter }) => {
 
   return (
     <>
-      <nav>
-        <Link to={'/'}>
-          <div className='logo'>
-            <h1>
-              ROSE <span>SHOP</span>
-            </h1>
-            <img src={shopIcon} alt='shop icon' />
-          </div>
-        </Link>
-        <form className='search' onSubmit={SubmitHandler}>
-          <input type='text' onChange={(e) => setInputValue(e.target.value)} />
-          <button type='submit'>
-            <img src={searchIcon} alt='search' />
-          </button>
-        </form>
-
-        <div className='badge'>
-          <Link to={'/cart'}>
-            <button>
-              <div className='cart-icon'>
-                <img src={cartIcon} alt='cart icon' />
-                <div className='badge-count'>
-                  <span> {cartItems.length}</span>
-                </div>
+      <div className='nav-container'>
+        <nav>
+          <div id='logo'>
+            <Link to={'/'}>
+              <div className='logo'>
+                <h1>
+                  ROSE <span>SHOP</span>
+                </h1>
+                <img src={shopIcon} alt='shop icon' />
               </div>
+            </Link>
+          </div>
+          <div id='search-from'>
+            <form className='search' onSubmit={SubmitHandler}>
+              <input
+                type='text'
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <button type='submit'>
+                <img src={searchIcon} alt='search' />
+              </button>
+            </form>
+          </div>
 
-              <span className='badge-cart'>Cart</span>
-            </button>
-          </Link>
-        </div>
-      </nav>
+          <div className='badge'>
+            <Link to={'/cart'}>
+              <button>
+                <div className='cart-icon'>
+                  <img src={cartIcon} alt='cart icon' />
+                  <div className='badge-count'>
+                    <span> {cartItems.length}</span>
+                  </div>
+                </div>
+
+                <span className='badge-cart'>Cart</span>
+              </button>
+            </Link>
+          </div>
+        </nav>
+      </div>
+
       <div className='main-image'>
         <img src={shopHeader} alt='shop' />
         <div className='welcome-massage'>

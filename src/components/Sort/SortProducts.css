@@ -4,7 +4,8 @@
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: flex-end;
+  padding: 0px 20px;
+  justify-content: space-between;
   padding-right: 10px;
   align-items: center;
 }

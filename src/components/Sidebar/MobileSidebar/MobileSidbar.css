@@ -1,0 +1,45 @@
+.open-btn {
+  display: flex;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  cursor: pointer;
+  align-items: center;
+  flex-direction: row;
+  justify-content: baseline;
+}
+
+.nav-menu {
+  z-index: 999;
+  background-color: #060b26;
+  max-width: 350px;
+  padding: 10px;
+  padding-top: 5rem;
+  height: 100%;
+  overflow: scroll;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  /* display: none; */
+  transition: 850ms;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.nav-menu.active {
+  /* display: block; */
+
+  right: 0;
+  transition: 350ms;
+}
+@media only screen and (min-width: 1060px) {
+  .open-btn {
+    display: none;
+  }
+}

@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 //components
+import TemporaryDrawer from '../Sidebar/MobileSidebar/MobileSidebar';
 import { ACTIONS, FilterContext } from '../context/filter_context';
 
 //styles
@@ -22,6 +23,7 @@ const SortProducts = () => {
 
   return (
     <div className='sort-products'>
+      <TemporaryDrawer />
       <FormControl variant='standard' sx={{ m: 1, minWidth: 150 }}>
         <InputLabel id='demo-simple-select-standard-label'>Sort by:</InputLabel>
         <Select

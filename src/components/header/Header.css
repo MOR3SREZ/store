@@ -1,27 +1,32 @@
-nav {
+.nav-container {
+  min-height: 60px;
   width: 100%;
-  height: 80px;
+}
+nav {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  width: 100%;
   padding: 10px;
   background-color: var(--secondary);
-  display: flex;
   color: white;
-  justify-content: space-between;
-  align-items: center;
-  /* position: fixed;
+  position: fixed;
   z-index: 999;
-  top: 0; */
+  top: 0;
 }
 nav a {
   text-decoration: none;
 }
 /*header logo */
-
-.logo {
+#logo {
+  grid-area: 1 / 1 / 2 / 2;
+}
+a .logo {
   display: flex;
   justify-content: baseline;
-  width: 350px;
+  width: 250px;
 }
-.logo h1 {
+a .logo h1 {
   font-size: 2rem;
   color: #fff;
 }
@@ -32,16 +37,22 @@ nav a {
   height: 40px;
 }
 /*header Searchbar */
-.search {
+#search-from {
+  grid-area: 1 / 2 / 2 / 4;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.search {
+  width: 100%;
 
-  /* margin: 3rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search input {
-  width: 60%;
+  width: 80%;
   height: 45px;
   padding: 10px;
 
@@ -65,10 +76,13 @@ nav a {
   width: 25px;
   height: 25px;
 }
+
 /*header badge */
 .badge {
   margin-right: 3rem;
-  width: 350px;
+  width: max-content !important;
+  grid-area: 1 / 4 / 2 / 5;
+  justify-self: center;
 }
 
 .badge button {
@@ -97,7 +111,7 @@ nav a {
   right: 38%;
   left: 38%;
 }
-.badge button img {
+.badge button .cart-icon img {
   height: 45px;
   width: 45px;
   margin: 2px 5px 0 0;
@@ -112,7 +126,9 @@ nav a {
 .main-image {
   width: 100%;
   height: 20rem;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   position: relative;
 }
@@ -130,21 +146,16 @@ nav a {
   width: 110%;
   height: 100%;
   object-fit: cover;
-  /* transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem); */
 }
 .welcome-massage {
   position: absolute;
   z-index: 5;
-  margin: auto;
-  top: 0;
+  margin: 2rem;
   text-align: center;
-  left: 0;
-  bottom: 0;
-  right: 0;
   background-color: var(--secondary2);
   color: #fff;
   padding: 20px 15px;
-  width: 600px;
+  max-width: 600px;
   height: fit-content;
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
@@ -160,4 +171,120 @@ nav a {
 }
 .welcome-massage span {
   color: var(--primary);
+}
+
+/* -----MOBILE______ */
+@media only screen and (max-width: 1060px) {
+  a .logo {
+    display: flex;
+    justify-content: baseline;
+    width: max-content;
+  }
+  a .logo h1 {
+    font-size: 1.5rem;
+  }
+  a .logo img {
+    height: 30px;
+  }
+  /* ----badge---- */
+  .badge {
+    margin-right: 0rem;
+    width: max-content;
+    justify-self: center;
+  }
+
+  .badge button {
+    padding: 0px 5px;
+  }
+  .badge button .badge-count {
+    right: 34%;
+    left: 34%;
+  }
+  .badge button .cart-icon img {
+    height: 35px;
+    width: 35px;
+    margin: 2px 5px 0 0;
+    color: #fff;
+  }
+  .badge button .badge-cart {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* ________Searchbar_____ */
+  .search input {
+    width: 80%;
+    height: 35px;
+    padding: 10px;
+  }
+
+  .search button {
+    padding: 5px 7px;
+    height: 35px;
+  }
+  .search button img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* MediaQuery 650px */
+@media only screen and (max-width: 650px) {
+  .nav-container {
+    min-height: 120px;
+    width: 100%;
+  }
+  nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 30px;
+  }
+  a .logo h1 {
+    font-size: 2rem;
+  }
+
+  #logo {
+    grid-area: 1 / 1 / 2 / 5;
+    justify-self: center;
+  }
+  #search-from {
+    grid-area: 2 / 1 / 3 / 4;
+  }
+  .badge {
+    grid-area: 2 / 4 / 3 / 5;
+    justify-self: flex-end;
+  }
+
+  .badge button {
+    padding: 5px 0px;
+  }
+  .badge button .badge-count {
+    right: 34%;
+    left: 34%;
+  }
+  .badge button .cart-icon img {
+    height: 30px;
+    width: 30px;
+    margin: 2px 5px 0 0;
+    color: #fff;
+  }
+  .badge button .badge-cart {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .welcome-massage h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .welcome-massage p {
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .welcome-massage span {
+    color: var(--primary);
+  }
 }
